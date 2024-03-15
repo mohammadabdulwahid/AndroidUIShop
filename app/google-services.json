@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "725317368576",
+    "project_id": "androiduishop",
+    "storage_bucket": "androiduishop.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:725317368576:android:b6f181c7ba0c5f584c11e5",
+        "android_client_info": {
+          "package_name": "com.example.androiduishop"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnEdz0wtxtuM1Qu3HTHWB3uscrE18nO1U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

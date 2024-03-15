@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <ImageView
+            android:id="@+id/app_image"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:scaleType="fitXY"
+            android:background="@color/color_one"
+            android:src="@drawable/thumbnail"
+            />
+
+        <TextView
+            android:id="@+id/app_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Taka: 25"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/color_one"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_marginTop="5dp"
+            />
+
+        <TextView
+            android:id="@+id/app_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Notepad Applications"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            android:textColor="@color/color_one"
+            android:paddingStart="10dp"
+            android:paddingRight="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="15dp"
+            />
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
