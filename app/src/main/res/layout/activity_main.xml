@@ -5,7 +5,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/bg"
     tools:context=".MainActivity">
 
     <RelativeLayout
@@ -16,19 +16,49 @@
         <RelativeLayout
             android:id="@+id/menu_section"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:background="@color/color_one"
+            android:layout_height="wrap_content"
+            android:background="@color/bg"
             >
 
-            <ImageView
-                android:id="@+id/menu"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/ic_menu"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="10dp"
-                />
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/red"
+                android:layout_marginBottom="10dp"
+                app:cardElevation="7dp"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Android UI Shop"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:layout_marginStart="10dp"
+                        android:layout_alignParentStart="true"
+                        />
+
+                    <ImageView
+                        android:id="@+id/menu"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/ic_menu"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:layout_centerVertical="true"
+                        />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
 
         </RelativeLayout>
 
@@ -36,6 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/menu_section"
+            android:background="@color/bg"
             >
 
             <androidx.recyclerview.widget.RecyclerView
@@ -58,7 +89,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:background="@color/color_one"
+            android:background="@color/blue"
             >
 
             <TextView
@@ -81,7 +112,7 @@
             android:layout_height="match_parent"
             android:background="@color/white"
             app:menu="@menu/menu_items"
-            app:itemIconTint="@color/color_one"
+            app:itemIconTint="@color/blue"
             />
 
 

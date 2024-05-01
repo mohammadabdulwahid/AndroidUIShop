@@ -18,19 +18,18 @@ import androidx.core.view.WindowInsetsCompat;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+
 public class AddProduct extends AppCompatActivity {
 
     private ImageView back;
-    private EditText appName, appPrice, appImgLink;
     private Button publish;
     private DatabaseReference ref;
-    private FirebaseDatabase db;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_add_product);
 
         appWorks();
@@ -40,9 +39,21 @@ public class AddProduct extends AppCompatActivity {
 
     private void appWorks() {
         back = findViewById(R.id.back);
-        appName = findViewById(R.id.app_name);
-        appPrice = findViewById(R.id.app_price);
-        appImgLink = findViewById(R.id.app_img_link);
+        EditText appName = findViewById(R.id.app_name);
+        EditText appPrice = findViewById(R.id.app_price);
+        EditText appBeforePrice = findViewById(R.id.app_before_price);
+        EditText appDesc = findViewById(R.id.app_desc);
+        EditText appDownloadLink = findViewById(R.id.app_download_link);
+        EditText appThumbLink = findViewById(R.id.app_thumbnail_link);
+        EditText screenshotOne = findViewById(R.id.screenshot_one);
+        EditText screenshotTwo = findViewById(R.id.screenshot_two);
+        EditText screenshotThree = findViewById(R.id.screenshot_three);
+        EditText screenshotFour = findViewById(R.id.screenshot_four);
+        EditText screenshotFive = findViewById(R.id.screenshot_five);
+        EditText screenshotSix = findViewById(R.id.screenshot_six);
+        EditText screenshotSeven = findViewById(R.id.screenshot_seven);
+        EditText screenshotEight = findViewById(R.id.screenshot_eight);
+        EditText screenshotNine = findViewById(R.id.screenshot_nine);
         publish = findViewById(R.id.publish);
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -58,30 +69,115 @@ public class AddProduct extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ref = FirebaseDatabase.getInstance().getReference().child("products");
+                String id = ref.push().getKey();
 
                 String appNameST = appName.getText().toString();
                 String appPriceST = appPrice.getText().toString();
-                String appImgLinkST = appImgLink.getText().toString();
+                String appBeforePriceST = appBeforePrice.getText().toString();
+                String appDescSt = appDesc.getText().toString();
+                String appDownloadSt = appDownloadLink.getText().toString();
+                String appThumbSt = appThumbLink.getText().toString();
+                String imageOneSt = screenshotOne.getText().toString();
+                String imageTwoSt = screenshotTwo.getText().toString();
+                String imageThreeSt = screenshotThree.getText().toString();
+                String imageFourSt = screenshotFour.getText().toString();
+                String imageFiveSt = screenshotFive.getText().toString();
+                String imageSixSt = screenshotSix.getText().toString();
+                String imageSevenSt = screenshotSeven.getText().toString();
+                String imageEightSt = screenshotEight.getText().toString();
+                String imageNineSt = screenshotNine.getText().toString();
 
-                //https://drive.google.com/file/d/1_lbdfXR3tTutTUMeQvBImj59d_EsI3nV/view?usp=drive_link
-                //Main link convert to file id
                 String removeLinkFirst = "https://drive.google.com/file/d/";
                 String removeLinkSecond = "/view";
 
-                if (appImgLinkST.contains(removeLinkFirst)){
-                    String splitsOne = appImgLinkST.split(removeLinkFirst)[1];
+                if (
+                        appDownloadSt.contains(removeLinkFirst) ||
+                        appThumbSt.contains(removeLinkFirst) ||
+                        imageOneSt.contains(removeLinkFirst) ||
+                        imageTwoSt.contains(removeLinkFirst) ||
+                        imageThreeSt.contains(removeLinkFirst) ||
+                        imageFourSt.contains(removeLinkFirst) ||
+                        imageFiveSt.contains(removeLinkFirst) ||
+                        imageSixSt.contains(removeLinkFirst) ||
+                        imageSevenSt.contains(removeLinkFirst) ||
+                        imageEightSt.contains(removeLinkFirst) ||
+                        imageNineSt.contains(removeLinkFirst)
+                ){
+                    String splitsDownApp = appDownloadSt.split(removeLinkFirst)[1];
+                    String splitsThumb = appThumbSt.split(removeLinkFirst)[1];
+                    String splitsImageOne = imageOneSt.split(removeLinkFirst)[1];
+                    String splitsImageTwo = imageTwoSt.split(removeLinkFirst)[1];
+                    String splitsImageThree = imageThreeSt.split(removeLinkFirst)[1];
+                    String splitsImageFour = imageFourSt.split(removeLinkFirst)[1];
+                    String splitsImageFive = imageFiveSt.split(removeLinkFirst)[1];
+                    String splitsImageSix = imageSixSt.split(removeLinkFirst)[1];
+                    String splitsImageSeven = imageSevenSt.split(removeLinkFirst)[1];
+                    String splitsImageEight = imageEightSt.split(removeLinkFirst)[1];
+                    String splitsImageNine = imageNineSt.split(removeLinkFirst)[1];
 
-                    if (splitsOne.contains(removeLinkSecond)){
-                        String splitsTwo = splitsOne.split(removeLinkSecond)[0];
+                    if (
+                            splitsDownApp.contains(removeLinkSecond) ||
+                            splitsThumb.contains(removeLinkSecond) ||
+                            splitsImageOne.contains(removeLinkSecond) ||
+                            splitsImageTwo.contains(removeLinkSecond) ||
+                            splitsImageThree.contains(removeLinkSecond) ||
+                            splitsImageFour.contains(removeLinkSecond) ||
+                            splitsImageFive.contains(removeLinkSecond) ||
+                            splitsImageSix.contains(removeLinkSecond) ||
+                            splitsImageSeven.contains(removeLinkSecond) ||
+                            splitsImageEight.contains(removeLinkSecond) ||
+                            splitsImageNine.contains(removeLinkSecond)
+                    ){
+                        String download = splitsDownApp.split(removeLinkSecond)[0];
+                        String thumb = splitsThumb.split(removeLinkSecond)[0];
+                        String imageOne = splitsImageOne.split(removeLinkSecond)[0];
+                        String imageTwo = splitsImageTwo.split(removeLinkSecond)[0];
+                        String imageThree = splitsImageThree.split(removeLinkSecond)[0];
+                        String imageFour = splitsImageFour.split(removeLinkSecond)[0];
+                        String imageFive = splitsImageFive.split(removeLinkSecond)[0];
+                        String imageSix = splitsImageSix.split(removeLinkSecond)[0];
+                        String imageSeven = splitsImageSeven.split(removeLinkSecond)[0];
+                        String imageEight = splitsImageEight.split(removeLinkSecond)[0];
+                        String imageNine = splitsImageNine.split(removeLinkSecond)[0];
 
-                        ProductModel model = new ProductModel(appNameST, appPriceST, splitsTwo);
-                        ref.push().setValue(model);
+                        HashMap<String, Object> hashMap = new HashMap<>();
+                        hashMap.put("id", id);
+                        hashMap.put("appName", appNameST);
+                        hashMap.put("appPrice", appPriceST);
+                        hashMap.put("appOldPrice", appBeforePriceST);
+                        hashMap.put("appDesc", appDescSt);
+                        hashMap.put("download", download);
+                        hashMap.put("appThumb", thumb);
+                        hashMap.put("imageOne", imageOne);
+                        hashMap.put("imageTwo", imageTwo);
+                        hashMap.put("imageThree", imageThree);
+                        hashMap.put("imageFour", imageFour);
+                        hashMap.put("imageFive", imageFive);
+                        hashMap.put("imageSix", imageSix);
+                        hashMap.put("imageSeven", imageSeven);
+                        hashMap.put("imageEight", imageEight);
+                        hashMap.put("imageNine", imageNine);
+                        hashMap.put("sale", "0");
+                        hashMap.put("status", "pending");
+                        ref.child(id).setValue(hashMap);
 
                         Toast.makeText(AddProduct.this, "Success", Toast.LENGTH_SHORT).show();
 
                         appName.setText("");
                         appPrice.setText("");
-                        appImgLink.setText("");
+                        appBeforePrice.setText("");
+                        appDesc.setText("");
+                        appDownloadLink.setText("");
+                        appThumbLink.setText("");
+                        screenshotOne.setText("");
+                        screenshotTwo.setText("");
+                        screenshotThree.setText("");
+                        screenshotFour.setText("");
+                        screenshotFive.setText("");
+                        screenshotSix.setText("");
+                        screenshotSeven.setText("");
+                        screenshotEight.setText("");
+                        screenshotNine.setText("");
                     }
                 }
 

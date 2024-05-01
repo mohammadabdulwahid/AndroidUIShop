@@ -7,4 +7,10 @@
         android:icon="@drawable/ic_add"
         />
 
+    <item
+        android:id="@+id/logout"
+        android:title="Log Out"
+        android:icon="@drawable/logout_icon"
+        />
+
 </menu>

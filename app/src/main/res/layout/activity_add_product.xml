@@ -1,70 +1,218 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".AddProduct">
 
-    <ImageView
-        android:id="@+id/back"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:background="@drawable/ic_back"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        />
-
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/backArea"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
+        android:layout_height="wrap_content"
         >
 
-        <EditText
-            android:id="@+id/app_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:layout_margin="10dp"
-            android:background="@drawable/input"
-            android:hint="App Name"
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/ic_back"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
             />
 
-        <EditText
-            android:id="@+id/app_price"
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/editArea"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/backArea"
+        >
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:layout_margin="10dp"
-            android:background="@drawable/input"
-            android:hint="App Price"
-            />
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            >
 
-        <EditText
-            android:id="@+id/app_img_link"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:layout_margin="10dp"
-            android:background="@drawable/input"
-            android:hint="App Image Link"
-            />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/publish"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Publish"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:background="@color/color_one"
-            android:layout_margin="10dp"
-            />
+                <EditText
+                    android:id="@+id/app_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/input"
+                    android:hint="App Name"
+                    android:inputType="text"
+                    />
 
-    </LinearLayout>
+                <EditText
+                    android:id="@+id/app_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/input"
+                    android:hint="App Price"
+                    android:inputType="number"
+                    />
 
-</LinearLayout>
+                <EditText
+                    android:id="@+id/app_before_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/input"
+                    android:hint="App Before Price"
+                    android:inputType="number"
+                    />
+
+                <EditText
+                    android:id="@+id/app_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="100dp"
+                    android:padding="10dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/input"
+                    android:hint="App Description"
+                    android:gravity="top"
+                    />
+
+                <EditText
+                    android:id="@+id/app_download_link"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/input"
+                    android:hint="App Download Link"
+                    />
+
+                <EditText
+                    android:id="@+id/app_thumbnail_link"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/input"
+                    android:hint="App Thumbnail Link 1024X500"
+                    />
+
+                <EditText
+                    android:id="@+id/screenshot_one"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/input"
+                    android:hint="App Screenshot One 1242X2208"
+                    />
+
+                <EditText
+                    android:id="@+id/screenshot_two"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/input"
+                    android:hint="App Screenshot Two 1242X2208"
+                    />
+
+                <EditText
+                    android:id="@+id/screenshot_three"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/input"
+                    android:hint="App Screenshot Three 1242X2208"
+                    />
+
+                <EditText
+                    android:id="@+id/screenshot_four"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/input"
+                    android:hint="App Screenshot Four 1242X2208"
+                    />
+
+                <EditText
+                    android:id="@+id/screenshot_five"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/input"
+                    android:hint="App Screenshot Five 1242X2208"
+                    />
+
+                <EditText
+                    android:id="@+id/screenshot_six"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/input"
+                    android:hint="App Screenshot Six 1242X2208"
+                    />
+
+                <EditText
+                    android:id="@+id/screenshot_seven"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/input"
+                    android:hint="App Screenshot Seven 1242X2208"
+                    />
+
+                <EditText
+                    android:id="@+id/screenshot_eight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/input"
+                    android:hint="App Screenshot Eight 1242X2208"
+                    />
+
+                <EditText
+                    android:id="@+id/screenshot_nine"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/input"
+                    android:hint="App Screenshot Nine 1242X2208"
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/publish"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Publish"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:background="@color/blue"
+                    android:layout_margin="10dp"
+                    />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+</RelativeLayout>

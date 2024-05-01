@@ -16,22 +16,55 @@
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:scaleType="fitXY"
-            android:background="@color/color_one"
+            android:background="@color/blue"
             android:src="@drawable/thumbnail"
             />
 
-        <TextView
-            android:id="@+id/app_price"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Taka: 25"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/color_one"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:layout_marginTop="5dp"
-            />
+            android:layout_marginBottom="10dp"
+            >
+
+            <TextView
+                android:id="@+id/app_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="Taka: 1500"
+                android:textColor="@color/text"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_centerVertical="true"
+                />
+
+            <TextView
+                android:id="@+id/app_before_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 2500"
+                android:textColor="@color/text"
+                android:textSize="18sp"
+                android:textStyle="normal"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/app_price"
+                android:layout_centerVertical="true"
+                />
+
+            <ImageView
+                android:id="@+id/add_cart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_cart"
+                android:layout_marginTop="10dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                />
+
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/app_name"
@@ -39,15 +72,63 @@
             android:layout_height="wrap_content"
             android:text="Notepad Applications"
             android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/text"
+            android:paddingStart="10dp"
+            android:paddingRight="10dp"
+            android:layout_marginTop="5dp"
+            android:maxLines="1"
+            />
+
+        <TextView
+            android:id="@+id/app_sale"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sales: 150"
+            android:textSize="12sp"
             android:textStyle="normal"
-            android:textColor="@color/color_one"
+            android:textColor="@color/yellow"
+            android:paddingStart="10dp"
+            android:paddingRight="10dp"
+            android:maxLines="1"
+            />
+
+        <TextView
+            android:id="@+id/app_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="This app very clean design and it is unieq app."
+            android:textSize="16sp"
+            android:textStyle="normal"
+            android:textColor="@color/text"
             android:paddingStart="10dp"
             android:paddingRight="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="15dp"
+            android:maxLines="2"
             />
 
-    </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
 
+            <TextView
+                android:id="@+id/app_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View"
+                android:textSize="20sp"
+                android:textStyle="normal"
+                android:textColor="@color/yellow"
+                android:layout_marginEnd="20dp"
+                android:layout_alignParentEnd="true"
+                android:paddingEnd="10dp"
+                android:paddingBottom="10dp"
+                />
+
+        </RelativeLayout>
+
+    </LinearLayout>
 
 </androidx.cardview.widget.CardView>

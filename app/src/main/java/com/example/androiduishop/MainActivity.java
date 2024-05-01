@@ -2,23 +2,26 @@ package com.example.androiduishop;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
 import androidx.core.view.GravityCompat;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,14 +37,15 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private RecyclerView recyclerView;
     private DatabaseReference ref;
+    private FirebaseAuth firebaseAuth;
+    private FirebaseUser firebaseUser;
     private ProductAdapter productAdapter;
-    private ArrayList<ProductModel> list;
-
+    //private ArrayList<ProductModel> list;
+    ArrayList<ProductModel> list = new ArrayList<>();
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
         menu = findViewById(R.id.menu);
@@ -68,6 +72,9 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity.this, AddProduct.class);
                     startActivity(intent);
                     finish();
+                } else if (item.getItemId() == R.id.logout){
+                    //firebaseUser = firebaseAuth.getCurrentUser();
+                    firebaseAuth.signOut();
                 }
 
                 return true;
@@ -77,16 +84,22 @@ public class MainActivity extends AppCompatActivity {
         ref = FirebaseDatabase.getInstance().getReference("products");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        list = new ArrayList<>();
         productAdapter = new ProductAdapter(this, list);
         recyclerView.setAdapter(productAdapter);
 
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                list.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    ProductModel model = dataSnapshot.getValue(ProductModel.class);
-                    list.add(model);
+
+                    String check = dataSnapshot.child("status").getValue().toString();
+
+                    if (check.contains("publish")){
+                        ProductModel model = dataSnapshot.getValue(ProductModel.class);
+                        list.add(model);
+                    }
                 }
                 productAdapter.notifyDataSetChanged();
             }
